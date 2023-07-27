@@ -9,7 +9,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BooksComponent } from './components/books/books.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { HomeComponent } from './components/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddBookComponent } from './components/add-book/add-book.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     BooksComponent,
     ComicsComponent,
-    HomeComponent
+    HomeComponent,
+    AddBookComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

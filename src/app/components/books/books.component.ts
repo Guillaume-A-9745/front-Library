@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/model/book';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +14,7 @@ export class BooksComponent implements OnInit{
   error : string | undefined;
   host : string = "";
 
-  constructor(private apiService : ApiService){}
+  constructor(private apiService : ApiService, private router : Router){}
 
   ngOnInit(): void {
     this.host = environment.host;
@@ -28,4 +29,21 @@ export class BooksComponent implements OnInit{
     })
   }
 
+  onDeleteBook(book : Book) {
+    if(confirm("Voulez-vous supprimer se livre ?")) {
+      this.apiService.deleteBook(book).subscribe({
+        next : () => this.refreshScreen(),
+        error : () => this.error = "Problème sur la suppression du livre",   
+        complete : () => this.error = ""
+      })
+    }
+  }
+
+  refreshScreen() {
+    this.getAllBooks();
+  }
+
+  onUpdateBook(book : Book) {
+    this.router.navigateByUrl('addBook/' + book.id)
+  }
 }
