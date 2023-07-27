@@ -11,7 +11,7 @@ export class Book {
     photo: string;
     category: Category;
     
-    constructor(id:number,title:string,series:string,number:number,summary:string,author:string,publisher:string,phot:string,category:Category){
+    constructor(id:number,title:string,series:string,number:number,summary:string,author:string,publisher:string,photo:string,category:Category){
         this.id = id;
         this.title = title;
         this.series = series;

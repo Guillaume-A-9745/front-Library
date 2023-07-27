@@ -1,1 +1,26 @@
-<p>books works!</p>
+<div class="container bg-light">
+    <div class="text-center py-4">
+        <h1>Liste des livres</h1>
+    </div>
+    <div *ngIf="error">
+        <div class="text-danger"> {{error}}</div>  
+    </div>
+
+    <ng-container *ngIf="listBooks">   
+        <div class="card-group d-flex justify-content-center">       
+            <div *ngFor="let book of listBooks">                        
+                    <div class="card mx-1 my-2" style="width: 360px;">
+                        <img class="img-thumbnail img-rounded btn"  [src]="host + '/photo/' + book.id" />
+                        <div class="card-body">
+                          <h5 class="card-title">{{book.title}}</h5>
+                          <p>Série : <span>{{book.series}}</span>. Numéro : <span>{{book.number}}</span></p>
+                          <p>Résumé : {{book.summary}}</p>   
+                          <p>Auteur : {{book.author}}</p>   
+                          <p>Publié chez : {{book.publisher}}</p>                            
+                        </div>      
+                    </div>                                        
+            </div>
+        </div>
+
+    </ng-container>
+</div>
